@@ -22,8 +22,3 @@ def vigenere_decrypt(encrypted_text, key):
             decrypted_text += decrypted_value
     return decrypted_text
 
-plain_text = "JAYHAWK"
-key = "EECS"
-encrypted_text = vigenere_encrypt(plain_text, key)
-print(encrypted_text)
-print(vigenere_decrypt(encrypted_text, key))
