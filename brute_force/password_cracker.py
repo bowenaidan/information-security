@@ -1,8 +1,22 @@
 from vigenere_cipher import vigenere_encrypt, vigenere_decrypt
 
-def password_crack(ciphertext, keyLength, firstWorldLength):
-    for i in range(65, 91):
-        for j in range(65, 91):
-            print(chr(i) + chr(j))
+def keyGen(keyLength, prefix=''):
+    if keyLength == 0:
+        yield prefix
+    else:
+        for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+            for combo in keyGen(keyLength - 1, prefix + letter):
+                yield combo
 
-password_crack("MSOKKJCOSXOEEKDTOSLGFWCMCHSUSGX", 2, 6)
+
+def password_crack(ciphertext, keyLength, firstWorldLength):
+    combinations = keyGen(keyLength, "")
+    for combination in combinations:
+        print(combination)
+        
+
+ciphertext = "FEJKLVENAIHOVLEFJE"
+firstWorldLength = 5
+
+password_crack(ciphertext, 4, firstWorldLength)
+# password_crack("MSOKKJCOSXOEEKDTOSLGFWCMCHSUSGX", 2, 6)
