@@ -21,4 +21,3 @@ def vigenere_decrypt(encrypted_text, key):
             decrypted_value = chr(((ord(char) - ord(key[index]) + 26) % 26) + 97)
             decrypted_text += decrypted_value
     return decrypted_text
-
